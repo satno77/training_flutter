@@ -1,10 +1,13 @@
 import 'package:training_flutter/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:training_flutter/theme.dart';
-import 'package:training_flutter/application/core/services/theme_service.dart';
+import 'application/core/services/theme_service.dart';
+import 'application/pages/advice/advice_page.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-void main() {
+
+void main() async{
+  await Hive.initFlutter();
   runApp(ChangeNotifierProvider(
     create: (context) => ThemeService(),
     child: const MyApp(),
@@ -20,7 +23,7 @@ class MyApp extends StatelessWidget {
         themeMode: themeService.isDarkModeOn ? ThemeMode.dark : ThemeMode.light,
         theme: AppTheme.lightTheme,
         darkTheme: AppTheme.darkTheme,
-        home: const Placeholder(),
+        home: const AdvicerPageWrapperProvider(),
       );
     });
   }

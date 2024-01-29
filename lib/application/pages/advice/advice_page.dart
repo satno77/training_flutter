@@ -38,6 +38,7 @@ class AdvicerPage extends StatelessWidget {
                 onChanged: (_) {
                   Provider.of<ThemeService>(context, listen: false)
                       .toggleTheme();
+
                 })
           ],
         ),
